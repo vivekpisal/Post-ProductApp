@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+
+<div class="col-md-4">
+</div>
+
+<div class="col-md-4" style="margin-left:10em">
+	<h1>User Information</h1>
+	<label>Username:</label>
+	<input type="text" value={{user.username}} class="form-control me-2" disabled >
+	<label>Firstname:</label>
+	<input type="text" value={{user.first_name}} class="form-control me-2" disabled>
+	<label>Lastname:</label>
+	<input type="text" value={{user.last_name}} class="form-control me-2" disabled >
+	<label>Date Joined:</label>
+	{{user.date_joined.day}}/{{user.date_joined.month}}/{{user.date_joined.year}}
+</div>
+
+{% endblock %}

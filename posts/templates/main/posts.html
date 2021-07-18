@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+	{% load crispy_forms_tags %}
+	<h1>All posts</h1>
+	<div class="row">
+	{% for i in posts %}
+	  <div class="col-sm-4">
+	    <div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title">{{i.text}}</h5>
+	        <p class="card-text">{{i.updated_at}}</p>
+	        <a href="{% url 'editpost' i.id %}" class="btn btn-primary">Edit</a>
+	        <a href="{% url 'deletepost' i.id %}" class="btn btn-danger">Delete</a>
+	      </div>
+	    </div>
+	  </div>
+	{% endfor %}
+	</div>
+
+	<form action="/addpost" method="post">
+		{% csrf_token %}
+		{{postform|crispy}}
+		<button type="submit">Add Post</button>
+	</form>
+
+{% endblock %}
